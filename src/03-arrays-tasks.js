@@ -557,6 +557,7 @@ function group(array, keySelector, valueSelector) {
       resultMap.set(key, []);
     }
     resultMap.get(key).push(valueSelector(item));
+    return item;
   });
   return resultMap;
 }
