@@ -5,7 +5,6 @@
  *                                                                                           *
  ******************************************************************************************* */
 
-
 /**
  * Returns the result of concatenation of two strings.
  *
@@ -21,7 +20,6 @@
 function concatenateStrings(value1, value2) {
   return value1 + value2;
 }
-
 
 /**
  * Returns the length of given string.
@@ -69,7 +67,6 @@ function extractNameFromTemplate(value) {
   const cutString = value.slice(0, value.length - 1);
   return `${cutString.split(' ')[1]} ${cutString.split(' ')[2]}`;
 }
-
 
 /**
  * Returns a first char of the given string.
@@ -133,7 +130,9 @@ function repeatString(value, count) {
  */
 function removeFirstOccurrences(str, value) {
   const valueIndex = str.indexOf(value);
-  return str.slice(0, valueIndex) + str.slice(valueIndex + value.length, str.length);
+  return (
+    str.slice(0, valueIndex) + str.slice(valueIndex + value.length, str.length)
+  );
 }
 /**
  * Remove the first and last angle brackets from tag string
@@ -149,7 +148,6 @@ function removeFirstOccurrences(str, value) {
 function unbracketTag(str) {
   return str.slice(1, str.length - 1);
 }
-
 
 /**
  * Converts all characters of the specified string into the upper case
@@ -232,7 +230,6 @@ function getRectangleString(width, height) {
   return result;
 }
 
-
 /**
  * Encode specified string with ROT13 cipher
  * See details:  https://en.wikipedia.org/wiki/ROT13
@@ -249,8 +246,36 @@ function getRectangleString(width, height) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  const halfDict = {
+    a: 'n',
+    b: 'o',
+    c: 'p',
+    d: 'q',
+    e: 'r',
+    f: 's',
+    g: 't',
+    h: 'u',
+    i: 'v',
+    j: 'w',
+    k: 'x',
+    l: 'y',
+    m: 'z',
+  };
+  const halfDict2 = Object.fromEntries(
+    Object.entries(halfDict).map((arr) => arr.reverse())
+  );
+  const lowerCaseDict = { ...halfDict, ...halfDict2 };
+  const upperCaseDict = Object.fromEntries(
+    Object.entries(lowerCaseDict).map((entry) =>
+      entry.map((letter) => letter.toUpperCase())
+    )
+  );
+  const fullDict = { ...lowerCaseDict, ...upperCaseDict };
+  return str
+    .split('')
+    .map((letter) => fullDict[letter] || letter)
+    .join('');
 }
 
 /**
@@ -269,7 +294,6 @@ function encodeToRot13(/* str */) {
 function isString(value) {
   return typeof value === 'string' || value instanceof String;
 }
-
 
 /**
  * Returns playid card id.
@@ -296,13 +320,62 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-  const deck = ['A♣', '2♣', '3♣', '4♣', '5♣', '6♣', '7♣', '8♣', '9♣', '10♣', 'J♣', 'Q♣', 'K♣',
-    'A♦', '2♦', '3♦', '4♦', '5♦', '6♦', '7♦', '8♦', '9♦', '10♦', 'J♦', 'Q♦', 'K♦',
-    'A♥', '2♥', '3♥', '4♥', '5♥', '6♥', '7♥', '8♥', '9♥', '10♥', 'J♥', 'Q♥', 'K♥',
-    'A♠', '2♠', '3♠', '4♠', '5♠', '6♠', '7♠', '8♠', '9♠', '10♠', 'J♠', 'Q♠', 'K♠'];
+  const deck = [
+    'A♣',
+    '2♣',
+    '3♣',
+    '4♣',
+    '5♣',
+    '6♣',
+    '7♣',
+    '8♣',
+    '9♣',
+    '10♣',
+    'J♣',
+    'Q♣',
+    'K♣',
+    'A♦',
+    '2♦',
+    '3♦',
+    '4♦',
+    '5♦',
+    '6♦',
+    '7♦',
+    '8♦',
+    '9♦',
+    '10♦',
+    'J♦',
+    'Q♦',
+    'K♦',
+    'A♥',
+    '2♥',
+    '3♥',
+    '4♥',
+    '5♥',
+    '6♥',
+    '7♥',
+    '8♥',
+    '9♥',
+    '10♥',
+    'J♥',
+    'Q♥',
+    'K♥',
+    'A♠',
+    '2♠',
+    '3♠',
+    '4♠',
+    '5♠',
+    '6♠',
+    '7♠',
+    '8♠',
+    '9♠',
+    '10♠',
+    'J♠',
+    'Q♠',
+    'K♠',
+  ];
   return deck.indexOf(value);
 }
-
 
 module.exports = {
   concatenateStrings,

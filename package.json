@@ -11,9 +11,12 @@
   "author": "aorgish, mikhama",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^6.6.0",
-    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint": "8.22.0",
+    "eslint-config-airbnb-base": "15.0.0",
     "eslint-plugin-import": "^2.18.2",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.3",
     "mocha": "^6.2.2"
   },
   "repository": {

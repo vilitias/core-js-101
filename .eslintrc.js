@@ -5,9 +5,8 @@ module.exports = {
     node: true,
     mocha: true,
   },
-  extends: [
-    'airbnb-base',
-  ],
+  extends: ['airbnb-base', 'prettier'],
+  plugins: ['prettier'],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
@@ -16,5 +15,6 @@ module.exports = {
     ecmaVersion: 2018,
   },
   rules: {
+    'prettier/prettier': 'error',
   },
 };

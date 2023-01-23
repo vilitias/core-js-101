@@ -7,7 +7,6 @@
  *                                                                                           *
  ******************************************************************************************* */
 
-
 /**
  * Returns an area of a rectangle given by width and height.
  *
@@ -22,7 +21,6 @@
 function getRectangleArea(width, height) {
   return width * height;
 }
-
 
 /**
  * Returns a circumference of circle given by radius.
@@ -71,7 +69,7 @@ function getAverage(value1, value2) {
  *   (-5,0) (10,-10) => 18.027756377319946
  */
 function getDistanceBetweenPoints(x1, y1, x2, y2) {
-  return Math.sqrt(((x2 - x1) ** 2) + ((y2 - y1) ** 2));
+  return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
 }
 
 /**
@@ -89,7 +87,6 @@ function getDistanceBetweenPoints(x1, y1, x2, y2) {
 function getLinearEquationRoot(a, b) {
   return -b / a;
 }
-
 
 /**
  * Returns an angle (in radians) between two vectors given by xi and yi,
@@ -129,7 +126,6 @@ function getLastDigit(value) {
   return value % 10;
 }
 
-
 /**
  * Returns a number by given string representation.
  *
@@ -161,7 +157,6 @@ function parseNumberFromString(value) {
 function getParallelepipedDiagonal(a, b, c) {
   return Math.sqrt(a ** 2 + b ** 2 + c ** 2);
 }
-
 
 /**
  * Returns the number rounded to specified power of 10.
@@ -202,9 +197,15 @@ function roundToPowerOfTen(num, pow) {
  *   17 => true
  */
 function isPrime(num) {
-  if (num === 2 || num === 3) { return true; }
-  if (num <= 1 || num % 2 === 0 || num % 3 === 0) { return false; }
-  for (let i = 5; i * i <= num; i += 6) { if (num % i === 0 || num % (i + 2) === 0) return false; }
+  if (num === 2 || num === 3) {
+    return true;
+  }
+  if (num <= 1 || num % 2 === 0 || num % 3 === 0) {
+    return false;
+  }
+  for (let i = 5; i * i <= num; i += 6) {
+    if (num % i === 0 || num % (i + 2) === 0) return false;
+  }
   return true;
 }
 

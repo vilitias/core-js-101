@@ -7,7 +7,6 @@
  *                                                                                            *
  ******************************************************************************************** */
 
-
 /**
  * Returns an index of the specified element in array or -1 if element is not found
  *
@@ -40,7 +39,6 @@ function generateOdds(length) {
   return arr;
 }
 
-
 /**
  * Returns the doubled array - elements of the specified array
  * are repeated twice using original order
@@ -56,7 +54,6 @@ function generateOdds(length) {
 function doubleArray(arr) {
   return [...arr, ...arr];
 }
-
 
 /**
  * Returns an array of positive numbers from the specified array in original order
@@ -85,7 +82,7 @@ function getArrayOfPositives(arr) {
  *    [ 'cat, 'dog', 'raccoon' ] => [ 'cat', 'dog', 'raccoon' ]
  */
 function getArrayOfStrings(arr) {
-  return arr.filter((elem) => typeof (elem) === 'string');
+  return arr.filter((elem) => typeof elem === 'string');
 }
 
 /**
@@ -119,7 +116,6 @@ function removeFalsyValues(arr) {
 function getUpperCaseStrings(arr) {
   return arr.map((value) => value.toUpperCase());
 }
-
 
 /**
  * Returns the array of string lengths from the specified string array.
@@ -164,7 +160,6 @@ function getHead(arr, n) {
   return arr.filter((_, index) => index < n);
 }
 
-
 /**
  * Returns the n last items of the specified array
  *
@@ -178,7 +173,6 @@ function getHead(arr, n) {
 function getTail(arr, n) {
   return arr.filter((_, index) => index >= arr.length - n);
 }
-
 
 /**
  * Returns CSV representation of two-dimensional numeric array.
@@ -201,12 +195,14 @@ function getTail(arr, n) {
  *    +'30,31,32,33,34'
  */
 function toCsvText(arr) {
-  return arr.map((elem, i) => {
-    if (i !== arr.length - 1) {
-      return `${elem}\n`;
-    }
-    return elem;
-  }).join('');
+  return arr
+    .map((elem, i) => {
+      if (i !== arr.length - 1) {
+        return `${elem}\n`;
+      }
+      return elem;
+    })
+    .join('');
 }
 
 /**
@@ -223,7 +219,6 @@ function toCsvText(arr) {
 function toArrayOfSquares(arr) {
   return arr.map((value) => value ** 2);
 }
-
 
 /**
  * Transforms the numeric array to the according moving sum array:
@@ -263,7 +258,6 @@ function getSecondItems(arr) {
   return arr.filter((_, index) => index % 2 === 1);
 }
 
-
 /**
  * Propagates every item in sequence its position times
  * Returns an array that consists of: one first item, two second items, three third items etc.
@@ -282,7 +276,6 @@ function propagateItemsByPositionIndex(arr) {
   return arr.flatMap((val, index) => new Array(index + 1).fill(val));
 }
 
-
 /**
  * Returns the 3 largest numbers from the specified array
  *
@@ -300,7 +293,6 @@ function get3TopItems(arr) {
   return arr.sort((a, b) => b - a).slice(0, 3);
 }
 
-
 /**
  * Returns the number of positive numbers from specified array
  *
@@ -316,7 +308,7 @@ function get3TopItems(arr) {
  */
 function getPositivesCount(arr) {
   return arr.reduce((acc, val) => {
-    if (typeof (val) === 'number' && val > 0) {
+    if (typeof val === 'number' && val > 0) {
       return acc + 1;
     }
     return acc;
@@ -422,7 +414,6 @@ function findAllOccurrences(arr, item) {
 function toStringList(arr) {
   return arr.join(',');
 }
-
 
 /**
  * Sorts the specified array by country name first and city name
@@ -562,7 +553,6 @@ function group(array, keySelector, valueSelector) {
   return resultMap;
 }
 
-
 /**
  * Projects each element of the specified array to a sequence
  * and flattens the resulting sequences into one array.
@@ -580,7 +570,6 @@ function selectMany(arr, childrenSelector) {
   return arr.flatMap((elem) => childrenSelector(elem));
 }
 
-
 /**
  * Returns an element from the multidimensional array by the specified indexes.
  *
@@ -596,7 +585,6 @@ function selectMany(arr, childrenSelector) {
 function getElementByIndexes(arr, indexes) {
   return indexes.reduce((acc, val) => acc[val], arr);
 }
-
 
 /**
  * Swaps the head and tail of the specified array:
@@ -633,13 +621,11 @@ function swapHeadAndTail(arr) {
   tail = arr.slice(middle + 1, arr.length);
   return [...tail, middleValue, ...head];
 
-
   // const middle = Math.ceil(arr.length / 2);
   //  head = arr.slice(0, middle);
   //  tail = arr.slice(middle, arr.length);
   // return tail;
 }
-
 
 module.exports = {
   findElement,
