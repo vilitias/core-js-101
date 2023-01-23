@@ -263,13 +263,11 @@ function encodeToRot13(str) {
     m: 'z',
   };
   const halfDict2 = Object.fromEntries(
-    Object.entries(halfDict).map((arr) => arr.reverse())
+    Object.entries(halfDict).map((arr) => arr.reverse()),
   );
   const lowerCaseDict = { ...halfDict, ...halfDict2 };
   const upperCaseDict = Object.fromEntries(
-    Object.entries(lowerCaseDict).map((entry) =>
-      entry.map((letter) => letter.toUpperCase())
-    )
+    Object.entries(lowerCaseDict).map((entry) => entry.map((letter) => letter.toUpperCase())),
   );
   const fullDict = { ...lowerCaseDict, ...upperCaseDict };
   return str

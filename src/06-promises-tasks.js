@@ -103,14 +103,12 @@ function getFastestPromise(array) {
  *
  */
 async function chainPromises(array, action) {
-  const wrappedArray = array.map((item, index) =>
-    item
-      .then((result) => [result, null])
-      .catch((reason) => [
-        null,
-        new Error(reason.toString() || `Rejected result at index  ${index}`),
-      ])
-  );
+  const wrappedArray = array.map((item, index) => item
+    .then((result) => [result, null])
+    .catch((reason) => [
+      null,
+      new Error(reason.toString() || `Rejected result at index  ${index}`),
+    ]));
   const result = await wrappedArray.reduce(
     async (prevPromise, currentPromise) => {
       const prev = await prevPromise;
@@ -131,7 +129,7 @@ async function chainPromises(array, action) {
           resolve([null, error]);
         }
       });
-    }
+    },
   );
   if (result[1] !== null) {
     throw result[1];
